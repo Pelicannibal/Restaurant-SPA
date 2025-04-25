@@ -1,0 +1,59 @@
+.layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  .column {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(auto-fit, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .section {
+    float: top;
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    grid-template-rows: repeat(auto-fit, 1fr);
+    gap: 0.5rem;
+    text-wrap: hidden;
+    outline: solid;
+    margin: auto 0;
+  }
+  
+  .sectionHeader {
+    font-weight: bold;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0.5rem;
+    grid-column: span 3;
+  }
+  
+  .poritonSizesStart {
+    grid-column: 2;
+  }
+
+  .dish {
+    display: contents;
+  }
+  
+  .dishName {
+    font-weight: 500;
+  }
+  
+  .price {
+    text-align: right;
+  }
+  
+  .dish-image {
+    /*grid-column: span 1;*/
+    width: 480px;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+  }
+  

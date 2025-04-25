@@ -1,0 +1,44 @@
+.navList {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #333;
+    width: 100vw;
+    min-width: 560px;
+    top: 0%;
+  }
+  .navItem {
+    float: right;
+  }
+
+  .logo {
+    float: left;
+  }
+  .logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+  }
+  .logo.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa);
+  }
+  
+  .logoImage {
+    display: flex;
+    margin: 1em;
+    height: 5em;
+  }
+
+  .link {
+    margin: 1em;
+    display: block;
+    color: seashell;
+    text-align: center;
+    padding: 2em;
+    font-weight: 500;
+    text-decoration: inherit;
+  }
+  .link:hover:not(.active) {
+    color: #535bf2;
+  }
+  
+  .active {
+    color: rgb(86, 92, 126);
+  }
