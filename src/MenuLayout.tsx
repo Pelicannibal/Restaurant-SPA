@@ -1,5 +1,5 @@
 import React from 'react';
-import { Section, Dish } from './menuitems.ts';
+import { Section, PortionSize } from './menuitems.ts';
 import style from './menu.module.css';
 
 type MenuLayoutProps = {
@@ -9,7 +9,8 @@ type MenuSectionProps = {
   section: Section;
 }
 type DishProps = {
-  dish: Dish;
+  name: string;
+  prices: { [portion: PortionSize]: string };
 }
 
 function splitEvenOdd<T>(arr: T[]): [T[], T[]] {
@@ -21,13 +22,15 @@ function splitEvenOdd<T>(arr: T[]): [T[], T[]] {
   return [even, odd];
 }
 
-const DishRow: React.FC<DishProps> = ({ dish }) => {
+const DishRow: React.FC<DishProps> = ({ name, prices }) => {
   return (
     <>
-      <div className={style.dishName}>{dish.name}</div>
-      {for (const [key, value] of dish.prices(portion)){
-        
-      }}
+      <div key={name} className={style.dishName}>{name}</div>
+      {Object.entries(prices).map(([portion, price]) => (
+        <div key={portion} className={style.price}>
+          {price}
+        </div>
+      ))}
     </>
   )
 }
@@ -35,17 +38,35 @@ const DishRow: React.FC<DishProps> = ({ dish }) => {
 const MenuSection: React.FC<MenuSectionProps> = ({ section }) => {
   return (
     <div className={style.section}>
-      <div className={style.sectionHeader}>Test Course</div>
-
-      {section.portionSizes ? (
-        section.portionSizes?.map((size: string, index) => (
-          <div className={index==0 ? style.portionSizesStart : ''}>
-            {size}
-          </div>
-        ))
-      ) : (
-        <></>
+      <div key={section.course} className={style.sectionHeader}>{section.course}</div>
+      
+      {section.sample?.image && (
+        <img src={section.sample?.image} className={style.dishImage}/>
       )}
+      
+      <div/>
+      {section.portionSizes ? (
+        <>
+          {section.portionSizes?.map((size: string) => (
+            <div key={size} className={style.dishSizes}>
+              {size}
+            </div>
+          ))}
+
+          {section.portionSizes?.length === 1 && (
+            <div/>
+          )}
+        </>
+      ) : (
+        <>
+          <div/>
+          <div/>
+        </>
+      )}
+
+      {section.dishes.map((dish) => (
+        <DishRow key={dish.name} name={dish.name} prices={dish.prices}/>
+      ))}
     </div>
   )
 }
@@ -54,7 +75,7 @@ const MenuColumn: React.FC<MenuLayoutProps> = ({ sections }) => {
   return (
     <div className={style.column}>
       {sections.map((section) => (
-        <MenuSection section={section}/>
+        <MenuSection section={section} key={section.course}/>
       ))}
     </div>
   )
@@ -66,8 +87,8 @@ export const MenuLayout: React.FC<MenuLayoutProps> = ({ sections }) => {
   return (
     <>
       <div className={style.layout}>
-        <MenuColumn sections={ evenSections }/>
-        <MenuColumn sections={ oddSections }/>
+        <MenuColumn sections={evenSections} key={"evenColumn"}/>
+        <MenuColumn sections={oddSections} key={"oddColumn"}/>
       </div>
     </>
   );
