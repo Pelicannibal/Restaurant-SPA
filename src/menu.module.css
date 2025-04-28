@@ -5,8 +5,9 @@
     width: 100%;
     max-width: 1200px;
     outline: solid;
+    outline-color: #252525;
   }
-
+yfgthc
   .column {
     display: grid;
     grid-template-columns: 1fr;

@@ -24,6 +24,18 @@
     display: flex;
     margin: 1em;
     height: 5em;
+    fill: #F7EBE8;
+  }
+
+  .navButton {
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    background: none;
+    border:none;
+    text-decoration: inherit;
+    text-align: center;
   }
 
   .link {

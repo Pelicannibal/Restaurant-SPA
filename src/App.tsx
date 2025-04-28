@@ -21,7 +21,7 @@ function App(){
           <Route path='/menu' element={<Menu/>}/>
         </Routes>
       </Router>
-      <footer>
+      <footer id='contact'>
         <p>Phone: +1 800 eat-now</p>
         <p>Email: food@restaurant.com</p>
         <p>Address: 7 Culinary st., WA, 77-7777</p>

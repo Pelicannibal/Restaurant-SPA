@@ -16,6 +16,9 @@ const link_dictionary: IDictionary = {
     "Menu" : "/menu",
 };
 
+const handleScrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+}
 
 function Navbar(){
     return(
@@ -28,10 +31,21 @@ function Navbar(){
                 </li>
                 {items.map((item) => (
                     <li key={item} className={style.navItem}>
-                        <NavLink
-                            className={({ isActive }) => clsx(style.link, isActive && style.active)}
-                            to={link_dictionary[item]}>{item}
-                        </NavLink>
+                        {item==='Contact' ? (
+                            <a
+                                className={clsx(style.link, style.navButton)}
+                                onClick={handleScrollToContact}
+                                role='button'>
+                                {item}
+                            </a>
+                        ) : (
+                            <NavLink
+                                className={({ isActive }) => clsx(style.link, isActive && style.active)}
+                                to={link_dictionary[item]}>
+                                {item}
+                            </NavLink>
+                        )}
+                        
                     </li>
                 ))}
             </ul>
