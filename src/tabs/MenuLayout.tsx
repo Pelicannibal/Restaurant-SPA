@@ -1,5 +1,5 @@
 import React from 'react';
-import { Section, PortionSize } from './menuitems.ts';
+import { Section, PortionSize } from '../menuitems.ts';
 import style from './menu.module.css';
 
 type MenuLayoutProps = {
@@ -73,7 +73,7 @@ const MenuSection: React.FC<MenuSectionProps> = ({ section }) => {
 
 const MenuColumn: React.FC<MenuLayoutProps> = ({ sections }) => {
   return (
-    <div className={style.column}>
+    <div /*className={style.column} <- uncomment if there are formatting issues*/>
       {sections.map((section) => (
         <MenuSection section={section} key={section.course}/>
       ))}

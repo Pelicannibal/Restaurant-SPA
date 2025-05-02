@@ -1,5 +1,7 @@
 import { useEffect,useState } from "react";
 import clsx from 'clsx';
+import Logo from '/RBBW_Logo_Dark.png';
+
 import style from './gallery.module.css';
 
 type RotatingGalleryProps = {
@@ -21,6 +23,7 @@ export const RotatingGallery: React.FC<RotatingGalleryProps> = ({ images, interv
 
     return (
         <div className={style.rotatingGallery}>
+            <img src={Logo} className={style.mainLogo} />
             {images.map((img, index) => (
                 <img
                     key={index}
