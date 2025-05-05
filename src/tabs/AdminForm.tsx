@@ -1,12 +1,19 @@
 import { useForm } from 'react-hook-form';
 import { postAnnouncement } from '../api/announcement';
+import { Filter } from 'bad-words';
 
 import style from "./admin.module.css";
 
 export const AdminForm = () => {
+    const filter = new Filter();
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = (data: any) => {
+        if (filter.isProfane(data.message)) {
+            alert('Your message contains inappropriate language.')
+            return;
+        }
+        
         postAnnouncement(
             data.message,
             parseInt(data.duration)

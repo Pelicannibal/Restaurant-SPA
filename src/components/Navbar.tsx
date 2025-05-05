@@ -56,7 +56,7 @@ const NavLayout = () => {
                     </NavLink>
                 </li>
                 <a className={clsx(style.navFocus, style.link, style.orderButton)}
-                onClick={() => handleScrollToElement('order')}
+                onClick={() => alert('Functionality can be tailored to your needs')}
                 role='button'
                 key='orderButton'>
                     Order Now
