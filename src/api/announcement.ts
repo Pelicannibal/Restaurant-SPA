@@ -25,7 +25,7 @@ export async function postAnnouncement(
     durationHours: number
   ): Promise<boolean> {
     try {
-      const response = await api.post('/announcement', {
+      const response = await api.post('/RestaurantMockResponse', {
         message,
         durationHours,
       });
